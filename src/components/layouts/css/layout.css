@@ -1,0 +1,83 @@
+/* Layout container */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Header */
+header, .header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #0d6efd;
+  color: white;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Body wrapper */
+.body-container {
+  display: flex;
+  flex: 1;
+  /* margin-top: 50px;  */
+  /* Push content below fixed header */
+  min-height: calc(100vh - 60px);
+}
+
+.body-container > aside,
+.body-container > nav {
+  position: fixed;
+  top: 60px; /* Start below header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 60px);
+  z-index: 50; /* Lower than header */
+  overflow-y: auto;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar (NO FIXED POSITION) */
+.side-menu {
+  width: 250px;
+  background: #f0f0f0;
+  padding: 20px;
+  height: calc(100vh - 60px);
+  overflow-y: auto; 
+  
+}
+
+/* Main content - FIXED: Added margin-left to start after sidebar */
+.content {
+  flex-grow: 1;
+  margin-left: 250px; /* Match sidebar width so content starts after it */
+  padding: 20px;
+  padding-bottom: 70px; /* <- add extra space for footer (50px) */
+   margin-bottom: 50px; /* add space equal to footer height */
+      overflow-y: auto;
+    height: 100%;
+}
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .body-container > aside,
+  .body-container > nav {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .body-container > aside.open,
+  .body-container > nav.open {
+    transform: translateX(0);
+  }
+
+
+}

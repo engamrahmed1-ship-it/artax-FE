@@ -1,0 +1,101 @@
+/* --- Shared UI Elements --- */
+.source-tag {
+    background: #edf2f7;
+    color: #4a5568;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+/* --- Lead Table Specifics --- */
+.btn-convert {
+    background-color: #6366f1; /* Indigo */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-convert:hover {
+    background-color: #4f46e5;
+    transform: scale(1.05);
+}
+
+/* --- Opportunity View --- */
+.opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.opp-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+.opp-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.opp-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #059669; /* Emerald Green */
+    margin-bottom: 4px;
+}
+
+.opp-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+.opp-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+/* --- Probability Bar --- */
+.probability-bar-bg {
+    height: 8px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.probability-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #34d399 0%, #059669 100%);
+    border-radius: 4px;
+    transition: width 0.6s ease-in-out;
+}
+
+/* --- Status Pills for Leads/Opps --- */
+.status-pill-small.new { background: #dcfce7; color: #166534; }
+.status-pill-small.qualified { background: #fef9c3; color: #854d0e; }
+.status-pill-small.converted { background: #e0e7ff; color: #3730a3; }
+
+.status-pill-small.won { background: #dcfce7; color: #15803d; }
+.status-pill-small.lost { background: #fee2e2; color: #b91c1c; }
+.status-pill-small.proposal { background: #ffedd5; color: #9a3412; }

@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  artax-frontend:
+    build: .
+    container_name: artax-frontend
+    restart: always
+    networks:
+      - npm_network
+    # We don't necessarily need to expose ports to the public 
+    # because Nginx Proxy Manager will talk to it internally.
+
+networks:
+  npm_network:
+    external: true

@@ -1,0 +1,66 @@
+/* Header.css */
+
+.header {
+  background-color: #282c34; /* Dark background  #2c3e50 */  
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+}
+
+.header-logo h1 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff; /* React blue color */
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header-nav li {
+  margin-left: 25px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  color: #61dafb; /* Highlight on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav li {
+    margin: 5px 0;
+  }
+}

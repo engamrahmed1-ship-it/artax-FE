@@ -1,0 +1,151 @@
+/* Screen Navigation Container */
+.screen-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #eeeeee;
+  border-radius: 12px;
+  border: 1px solid #2c3e50;;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  overflow-x: auto;
+}
+
+/* Navigation Items */
+.screen-nav-item {
+  position: relative;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.screen-nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #2c3e50;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.screen-nav-item.active {
+  background: #2c3e50;
+  color: #eeeeee;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.screen-nav-item.active::before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #2c3e50;;
+}
+
+/* Icons in navigation items */
+.screen-nav-item .nav-icon {
+  font-size: 18px;
+}
+
+/* Breadcrumb style separator */
+.screen-nav-separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .screen-nav {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+
+  .screen-nav-item {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .screen-nav-item .nav-icon {
+    font-size: 16px;
+  }
+}
+
+/* Alternative flat design */
+.screen-nav.flat {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+.screen-nav.flat .screen-nav-item {
+  color: #6b7280;
+}
+
+.screen-nav.flat .screen-nav-item:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.screen-nav.flat .screen-nav-item.active {
+  background: #667eea;
+  color: white;
+}
+
+/* Alternative pills design */
+.screen-nav.pills {
+  background: transparent;
+  border-bottom: 2px solid #e5e7eb;
+  border-radius: 0;
+  padding: 8px 0;
+}
+
+.screen-nav.pills .screen-nav-item {
+  color: #6b7280;
+  border-radius: 20px;
+}
+
+.screen-nav.pills .screen-nav-item:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.screen-nav.pills .screen-nav-item.active {
+  background: #667eea;
+  color: white;
+}
+
+.screen-nav.pills .screen-nav-item.active::before {
+  display: none;
+}
+
+/* Scrollbar styling for overflow */
+.screen-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+.screen-nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.screen-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.screen-nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
