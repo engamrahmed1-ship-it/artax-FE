@@ -6,7 +6,8 @@ import { triggerGlobalLogout } from '../context/AuthContext'; // Assuming this f
 
 
 export const apiClient = axios.create({
-  baseURL: 'http://localhost:9000', // Your backend URL
+//   baseURL: 'http://localhost:9000', // Your backend URL
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
   },

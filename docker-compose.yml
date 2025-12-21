@@ -1,15 +1,56 @@
 version: '3.8'
 
 services:
+  # 1. The Database for Nginx Proxy Manager (Optional but recommended for stability)
+  npm-db:
+    image: 'jc21/mariadb-aria:latest'
+    container_name: artax-npm-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm_root_password'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm_password'
+    volumes:
+      - ./npm/mysql:/var/lib/mysql
+
+  # 2. Nginx Proxy Manager (The Global Gateway)
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: artax-npm
+    restart: always
+    ports:
+      - '80:80'   # Public HTTP
+      - '443:443' # Public HTTPS
+      - '81:81'   # Admin UI Port
+    environment:
+      DB_MYSQL_HOST: "npm-db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm_password"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - ./npm/data:/data
+      - ./npm/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - npm-db
+    networks:
+      - artax_network
+
+  # 3. Your React Frontend (Multi-stage build with internal Nginx)
   artax-frontend:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: artax-frontend
     restart: always
+    # Note: No ports mapped here! 
+    # NPM will talk to this container internally on port 80.
     networks:
-      - npm_network
-    # We don't necessarily need to expose ports to the public 
-    # because Nginx Proxy Manager will talk to it internally.
+      - artax_network
+    depends_on:
+      - nginx-proxy-manager
 
 networks:
-  npm_network:
-    external: true
+  artax_network:
+    driver: bridge
