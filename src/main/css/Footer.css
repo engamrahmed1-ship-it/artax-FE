@@ -4,30 +4,28 @@ footer {
     width: 100%;
     height: 50px;
     background-color: #f1f1f1;
-    margin-top: 20px;
     z-index: 10;
 }
 
-a{
-    color: black;
-}
-
-.copyright{
+/* 1. Set the container to Flexbox */
+.copyright {
     height: 100%;
-    padding: 10px;
-    background-color:#f1f1f1;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center;     /* Vertical centering */
+    background-color: #f1f1f1;
 }
 
-.copyright p{
+/* 2. Clean up the paragraph tag */
+.copyright p {
     font-size: 10px;
-    text-align: center;
-    width: 20%;
     color: #000;
-    bottom: 0;
-    left: 10px;
+    margin: 0;             /* Remove default margins that cause offset */
+    text-align: center;
+    width: auto;           /* Allow width to fit content */
 }
 
-.copyright a{
+.copyright a {
     font-size: 10px;
     font-weight: 500;
     color: #000;
