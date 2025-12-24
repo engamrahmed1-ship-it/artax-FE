@@ -1,119 +1,190 @@
-  /* .container { 
-    display: 'flex';
-     justify-content: 'center';
-      align-items: 'center'; 
-     height: '100vh'; 
-     background: '#f0f2f5' 
-    }
-  .form { padding: '2rem';
-     box-shadow: '0 4px 8px rgba(0,0,0,0.1)';
-      border-radius: '8px'; background: 'white'; width: '300px' 
-    }
-  
-  .input-group { margin-bottom: 1rem }
 
-  input { width: '100%'; 
-    padding: '0.5rem'
-    ; border: '1px solid #ccc';
-     border-radius: '4px' }
-
-  button { width: '100%'; padding: '0.75rem'; 
-    border: 'none'; background: '#007bff';
-     color: 'white'; border-radius: '4px'; 
-     cursor : 'pointer' }
-  error { color: 'red'; text-align: 'center' } */
 
 .login-div {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;          /* Works now because parents are 100% */
+  height: 100%;        
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;       /* Prevents scrollbars */
+  overflow: hidden;       
+}
+
+/* This ensures the internal flex container takes up every pixel of the login-div */
+.login-div > .d-flex {
+    width: 100%;
+    height: 100%;
+}
+
+.login-title {
+  /* Smaller, more professional font size */
+  font-size: 1.5rem;           /* Reduced from 2.2rem */
+  
+  /* Font selection for a modern look */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Styling to match the Artax branding */
+  font-weight: 600;            /* Semi-bold for clarity without being too heavy */
+  color: #444444;              /* Soft dark grey for better readability */
+  text-align: center;
+  
+  /* Spacing */
+  margin-top: 10px;
+  margin-bottom: 25px;         /* Reduced gap to keep the card compact */
+  letter-spacing: -0.2px;      /* Subtle tightening for a modern feel */
+  text-transform: none;        /* Ensures it's "Sign in" not "SIGN IN" */
 }
 
 
-
-  .login-card {
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-
-  .login-brand {
-    width: 40%;
-  }
-
-  .login-brand img {
+.brand-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
+    object-fit: cover; /* Prevents image stretching */
+}
 
-  .login-form {
-    width: 60%;
-  }
 
-  .form {
-    width: 60%;
-  }
+.login-logo {
+    /* Increased width */
+    width: 290px; 
+    
+    /* Set max-width higher to allow it to grow on larger screens */
+    max-width: 90%; 
+    
+    /* Maintain aspect ratio */
+    height: auto;
+    
+    /* Centering logic */
+    display: block;
+    margin: 0 auto;
+    
+    /* Optional: Ensure high-quality scaling */
+    image-rendering: -webkit-optimize-contrast;
+}
 
-  .rounded-t-5 {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-  }
+/* Optional: Remove default padding from the h1 container if it's too bulky */
+.display-4 {
+  margin-bottom: 0;
+  line-height: 1;
+}
 
-  @media (min-width: 992px) {
-    .rounded-tr-lg-0 {
-      border-top-right-radius: 0;
-    }
+.login-brand-section, .login-form-section {
+    height: 100%; /* Ensures both sides go from top to bottom */
+    width: 50%;
+}
+/* The parent of the login-card */
+.login-form-section {
+    display: flex;
+    align-items: flex-start; /* Keeps it near the top */
+    justify-content: flex-start; /* Keeps it near the left of this section */
+    padding-top: 5%;  /* Controls vertical position */
+    padding-left: 5%; /* Controls horizontal position */
+}
 
-    .rounded-bl-lg-5 {
-      border-bottom-left-radius: 0.5rem;
-    }
-  }
-
-  .card-body {
-    padding: 3rem 2rem;
-  }
-
-  .form-outline {
-    margin-bottom: 1.5rem;
-    text-align: left;
+.login-card {
+    background: white;
+    padding: 70px; /* Internal spacing */
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    /* Enlarged dimensions */
     width: 100%;
-  }
+    max-width: 650px; 
+    
+    /* Reset margin to avoid positioning conflicts */
+    margin: 0; 
+}
 
-  .form-control {
+/* Input styling to match the photo */
+.custom-input {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 12px;
+  background-color: #fafafa;
+}
+
+.custom-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+}
+
+/* The blue gradient button from the photo */
+.btn-gradient {
     width: 100%;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-  }
+    max-width: 320px; /* Matches the input width */
+    height: 48px;
+    margin: 10px auto 0; /* Centered with a bit of top margin */
+    display: block;
+    
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    
+    /* Artax Gradient: From Cyan to Deep Blue */
+    background: linear-gradient(90deg, #00C6FF 0%, #0072FF 100%);
+    
+    /* Soft Blue Glow Shadow */
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
+    
+    transition: all 0.3s ease;
+}
 
-  .form-label {
-    margin-top: 0.25rem;
-    font-size: 0.9rem;
-    color: #555;
-  }
+.btn-gradient:hover {
+    /* Slight lift and stronger glow on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.45);
+    opacity: 0.95;
+}
 
-  .btn-block {
-    width: 100%;
-    padding: 0.75rem;
-  }
+.btn-gradient:active {
+    /* "Press" effect */
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+}
 
-  .error {
-    color: red;
-    margin-bottom: 1rem;
-  }
 
-  .forgot-password-link {
-    font-size: 0.9rem;
-    color: #007bff;
-    text-decoration: none;
-  }
+/* Background of the whole page (optional) */
+/* Container to stack input and label vertically */
+.input-group-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the label under the input */
+  margin-bottom: 25px;
+  width: 100%;
+}
 
-  .forgot-password-link:hover {
-    text-decoration: underline;
-  }
+/* The actual input field */
+.custom-input {
+  width: 100%;
+  max-width: 320px; /* Adjust based on your card width */
+  height: 45px;
+  background-color: #ffffff;
+  border: 1px solid #d1d9e0; /* Soft grey border from photo */
+  border-radius: 12px; /* Smooth rounded corners */
+  padding: 10px 15px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  text-align: center; /* Optional: centers the typed text like the photo */
+}
+
+/* Focus effect: Subtle blue glow */
+.custom-input:focus {
+  border-color: #00c6ff;
+  box-shadow: 0 0 8px rgba(0, 198, 255, 0.2);
+}
+
+/* The small label underneath */
+.input-sub-label {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #8e8e8e; /* Faded grey color from design */
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}

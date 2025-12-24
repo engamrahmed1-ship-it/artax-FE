@@ -3,7 +3,8 @@ import './css/Login.css';
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import loginBg from '../../assets/images/loginP1.png';
+import fullLogo from '../../assets/images/Full-Logo.png';
 
 const LoginPage = () => {
   const [user, setUser] = useState('');
@@ -21,10 +22,10 @@ const LoginPage = () => {
     setError('');
     try {
       await auth.login(user, password, rememberMe);
+      console.log("Logged")
       navigate(from, { replace: true });
-      console.log('Redirect after login to:', from);
     } catch (err) {
-      setError('Failed to log in. Please check your credentials.');
+      setError('Invalid username or password.');
       console.error('this is the error ', err.message);
     }
   };
@@ -34,63 +35,59 @@ const LoginPage = () => {
       {/* <div className="card mb-3 login-card"> */}
 
 
-      <div className="d-flex flex-row bd-highlight mb-3  ">
+      <div className="d-flex flex-row w-100 h-100">
         {/* Left Image */}
-        <div className="login-brand">
+        <div className="login-brand-section flex-grow-1">
           <img
-            src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-            alt="Trendy Pants and Shoes"
+            // src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
+            src={loginBg}
+            alt="brand"
           // className="rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
           />
         </div>
 
         {/* Form Section */}
-        <div className="login-form">
-          <div className="card-body py-5 px-md-5 d-flex flex-column justify-content-center align-items-center">
-            <div className="container">
-              <div className="p-5 bg-light text-black text-center rounded shadow-lg">
-                <h1 className="display-4 fw-bold" style={{ letterSpacing: '2px' }}>
-                  ARTAX <span className="text-info">is the Future</span>
-                </h1>
-              </div>
+        <div className="login-form-section flex-grow-1">
+          {/* <div className="card-body py-5 px-md-5 d-flex flex-column justify-content-center align-items-center"> */}
+          <div className="login-card">
+            <div className="text-center mb-4">
+              <img
+                src={fullLogo}
+                alt="Artax Logo"
+                className="login-logo"
+              />
             </div>
+
             <div className="form mt-4">
-              <h2 className="fw-bold mb-4">Sign In</h2>
+              <h2 className="login-title">Sign In</h2>
               {error && <p className="error">{error}</p>}
 
               <form onSubmit={handleSubmit}>
                 {/* Email input */}
-                <div className="form-outline mb-4">
+                <div className="input-group-container">
                   <input
                     type="text"
-                    id="user"
-                    className="form-control"
+                    className="custom-input"
                     value={user}
                     onChange={(e) => setUser(e.target.value)}
-                    placeholder="Username"
                     required
+                    placeholder="" // Leave empty for a cleaner look
                   />
-                  <label className="form-label" htmlFor="username">
-                    username
-                  </label>
+                  <label className="input-sub-label">Username</label>
                 </div>
 
                 {/* Password input */}
-                <div className="form-outline mb-4">
+                <div className="input-group-container">
                   <input
                     type="password"
-                    id="password"
-                    className="form-control"
+                    className="custom-input"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
                     required
+                    placeholder=""
                   />
-                  <label className="form-label" htmlFor="password">
-                    Password
-                  </label>
+                  <label className="input-sub-label">Password</label>
                 </div>
-
                 {/* Remember me & Forgot password */}
                 {/* <div className="row mb-4 align-items-center">
                   <div className="col d-flex justify-content-start">
@@ -116,7 +113,7 @@ const LoginPage = () => {
                 </div> */}
 
                 {/* Submit button */}
-                <button type="submit" className="btn btn-primary btn-block mb-4">
+                <button type="submit" className="btn-gradient">
                   Sign in
                 </button>
               </form>

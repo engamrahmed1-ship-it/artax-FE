@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-  padding-top: 5%; /* instead of margin-top */
+  padding-top: 1%; 
   justify-content: center;
   align-items: center;
   background-color: #f8f9fa;
