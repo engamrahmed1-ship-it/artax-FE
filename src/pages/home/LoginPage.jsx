@@ -35,19 +35,8 @@ const LoginPage = () => {
       {/* <div className="card mb-3 login-card"> */}
 
 
-      <div className="d-flex flex-row w-100 h-100">
-        {/* Left Image */}
-        <div className="login-brand-section flex-grow-1">
-          <img
-            // src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-            src={loginBg}
-            alt="brand"
-          // className="rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
-          />
-        </div>
-
         {/* Form Section */}
-        <div className="login-form-section flex-grow-1">
+        <div className="login-form-section">
           {/* <div className="card-body py-5 px-md-5 d-flex flex-column justify-content-center align-items-center"> */}
           <div className="login-card">
             <div className="text-center mb-4">
@@ -120,7 +109,6 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-      </div>
       {/* </div> */}
     </div>
   );
