@@ -21,6 +21,7 @@ services:
       - '80:80'
       - '443:443'
       - '127.0.0.1:81:81'
+      #- '81:81'  # <--- REMOVED 127.0.0.1: so it's accessible via VPN  if you want to make it public
     environment:
       DB_MYSQL_HOST: "artax-npm-db"
       DB_MYSQL_PORT: 3306
