@@ -20,6 +20,7 @@ apiClient.interceptors.response.use(
     // Check for Unauthorized (401) or Forbidden (403)
     if (status === 401 || status === 403) {
       triggerGlobalLogout(); // This must clear the token and use navigate('/login')
+      return new Promise(() => {});
     }
     return Promise.reject(error);
   }

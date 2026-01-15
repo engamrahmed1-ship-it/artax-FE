@@ -8,10 +8,10 @@ import AdminPage from "../pages/admin/AdminPage";
 import { AuthProvider } from "../context/AuthContext";
 import Footer from "./Footer";
 import PublicOnlyRoute from "../components/protected/PublcOnlyRoute";
-import CrmPage from "../pages/crm/CrmPage";
-import CustomerInfo from "../pages/crm/CustomerInfo";
-import CreateCustomer from "../pages/crm/CreateCustomer";
-import CustomerSearch from "../pages/crm/CustomerSearch";
+import CrmPage from "../pages/customer/CrmPage";
+import CustomerInfo from "../pages/customer/CustomerInfo";
+import CreateCustomer from "../pages/customer/CreateCustomer";
+import CustomerSearch from "../pages/customer/CustomerSearch";
 import { TabProvider } from "../context/TabContext";
 import Leads from "../pages/lead/Leads";
 

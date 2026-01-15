@@ -19,14 +19,15 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError(''); // Clear previous errors
     try {
       await auth.login(user, password, rememberMe);
-      console.log("Logged")
+      
       navigate(from, { replace: true });
     } catch (err) {
-      setError('Invalid username or password.');
-      console.error('this is the error ', err.message);
+      // Extract message from server response or use a default
+      const message = err.response?.data?.message || 'Invalid username or password.';
+      setError(message);
     }
   };
 
@@ -35,50 +36,55 @@ const LoginPage = () => {
       {/* <div className="card mb-3 login-card"> */}
 
 
-        {/* Form Section */}
-        <div className="login-form-section">
-          {/* <div className="card-body py-5 px-md-5 d-flex flex-column justify-content-center align-items-center"> */}
-          <div className="login-card">
-            <div className="text-center mb-4">
-              <img
-                src={fullLogo}
-                alt="Artax Logo"
-                className="login-logo"
-              />
-            </div>
+      {/* Form Section */}
+      <div className="login-form-section">
+        {/* <div className="card-body py-5 px-md-5 d-flex flex-column justify-content-center align-items-center"> */}
+        <div className="login-card">
+          <div className="text-center mb-4">
+            <img
+              src={fullLogo}
+              alt="Artax Logo"
+              className="login-logo"
+            />
+          </div>
 
-            <div className="form mt-4">
-              <h2 className="login-title">Sign In</h2>
-              {error && <p className="error">{error}</p>}
+          <div className="form mt-4">
+            <h2 className="login-title">Sign In</h2>
+            {/* Error Message Display */}
+            {error && (
+              <div className="error-message" style={{ color: 'red', marginBottom: '1rem', textAlign: 'center' }}>
+                {error}
+              </div>
+            )}
 
-              <form onSubmit={handleSubmit}>
-                {/* Email input */}
-                <div className="input-group-container">
-                  <input
-                    type="text"
-                    className="custom-input"
-                    value={user}
-                    onChange={(e) => setUser(e.target.value)}
-                    required
-                    placeholder="" // Leave empty for a cleaner look
-                  />
-                  <label className="input-sub-label">Username</label>
-                </div>
+            <form onSubmit={handleSubmit}>
+              {/* Email input */}
+              <div className="input-group-container">
+                <input
+                  type="text"
+                  className="custom-input"
+                  value={user}
+                  onChange={(e) => setUser(e.target.value)}
+                  required
+                  placeholder="" // Leave empty for a cleaner look
+                />
+                <label className="input-sub-label">Username</label>
+              </div>
 
-                {/* Password input */}
-                <div className="input-group-container">
-                  <input
-                    type="password"
-                    className="custom-input"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    placeholder=""
-                  />
-                  <label className="input-sub-label">Password</label>
-                </div>
-                {/* Remember me & Forgot password */}
-                {/* <div className="row mb-4 align-items-center">
+              {/* Password input */}
+              <div className="input-group-container">
+                <input
+                  type="password"
+                  className="custom-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder=""
+                />
+                <label className="input-sub-label">Password</label>
+              </div>
+              {/* Remember me & Forgot password */}
+              {/* <div className="row mb-4 align-items-center">
                   <div className="col d-flex justify-content-start">
                     <div className="form-check">
                       <input
@@ -101,14 +107,14 @@ const LoginPage = () => {
                   </div>
                 </div> */}
 
-                {/* Submit button */}
-                <button type="submit" className="btn-gradient">
-                  Sign in
-                </button>
-              </form>
-            </div>
+              {/* Submit button */}
+              <button type="submit" className="btn-gradient">
+                Sign in
+              </button>
+            </form>
           </div>
         </div>
+      </div>
       {/* </div> */}
     </div>
   );

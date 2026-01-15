@@ -25,10 +25,14 @@ const SideMenu = () => {
     item.allowedRoles.some(role => user?.roles.includes(role))
   );
 
-  // Handle logout and redirect
+// Handle logout with confirmation
   const handleLogout = () => {
-    logout(); // Clear auth state
-    navigate('/login', { replace: true }); // Redirect to login
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    
+    if (confirmLogout) {
+      logout(); 
+      // Note: navigate('/login') is handled inside AuthContext's logout function
+    }
   };
 
   return (

@@ -1,0 +1,492 @@
+/* Specific button styles */
+/* Base button styles */
+.btn-primary,
+.btn-success,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Specific button styles */
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+
+.btn-primary:hover {
+    background: #5a67d8;
+}
+
+.btn-success {
+    background: #10b981;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+.btn-delete {
+  background: transparent;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #c53030;
+  color: white;
+  border-color: #c53030;
+  box-shadow: 0 4px 6px -1px rgba(197, 48, 48, 0.2);
+}
+
+.btn-save {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+
+.btn-save:hover {
+  background: #2c6ba0;
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 4px 6px -1px rgba(197, 48, 48, 0.2);
+}
+
+
+.close-btn {
+  background: none;
+  border: none ;
+  font-size: 24px !important;
+  line-height: 1;
+  color: #64748b;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn:hover {
+  color: #e53e3e;
+   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.7);
+}
+
+
+
+/* Opportunity -TAB */
+
+.opp-container {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.opp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 24px;
+}
+
+
+.section-title {
+    margin: 0 0 24px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+.pipeline-dashboard {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 15px;
+}
+
+.dashboard-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Dashboard Styling */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+
+.stat-card.blue {
+    background: #eff6ff;
+    border-color: #dbeafe;
+}
+
+.stat-card.green {
+    background: #f0fdf4;
+    border-color: #dcfce7;
+}
+
+.stat-card label {
+    font-size: 0.8rem;
+    font-weight: 730;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 7px;
+}
+
+
+.stat-info label {
+    color: #444;
+}
+
+.stat-card.blue label {
+    color: #2563eb;
+}
+
+.stat-card.green label {
+    color: #16a34a;
+}
+
+.stat-card p {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+
+/* funnel Section */
+
+.funnel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+}
+
+.funnel-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.funnel-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+
+.stage-name {
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.stage-value {
+    font-weight: 700;
+    color: #2d3748;
+}
+
+/* The "Track" of the bar */
+.funnel-bar-bg {
+    height: 12px;
+    background-color: #edf2f7;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* The actual colorful progress */
+.funnel-bar-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 10px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add a subtle hover effect to the row */
+.funnel-row:hover .funnel-bar-fill {
+    filter: brightness(1.1);
+}
+
+
+
+
+/* Deals List Styling */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 5px;
+}
+
+.section-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+
+
+
+/* Opportunity Cards */
+.opportunity-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+   grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.opp-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.opp-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.opp-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2f855a;
+  margin-bottom: 10px;
+}
+
+.opp-name {
+  margin: 0 0 10px 0;
+  color: #2d3748;
+}
+
+.probability-bar-bg {
+  height: 6px;
+  background: #edf2f7;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+
+.probability-bar-fill {
+  height: 100%;
+  background: #48bb78;
+  border-radius: 3px;
+}
+
+
+/* ===============================
+   Modal (Unified)
+================================ */
+.opp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+
+.opp-modal-content {
+  background: white;
+  width: 90%;
+  max-height: 90%;
+  max-width: 900px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid #334155;
+}
+
+.opp-modal-header {
+  padding: 20px 30px;
+  /* Aligned with form padding */
+  border-bottom: 1px solid #e2e8f0;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.opp-modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1e293b;
+}
+
+.opp-header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.opp-icon-badge {
+  background: #dbeafe;
+  color: #2563eb;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* ===============================
+   Forms
+================================ */
+
+.opp-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* .opp-form-section{
+    height: 100px;
+    display: flex;
+
+} */
+
+.opp-form-section label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.opp-form-section input,
+.opp-form-section select {
+  width: 100%;
+  padding: 10px 30px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.opp-form-section input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon svg {
+  position: absolute;
+  left: 10px;
+  color: #94a3b8;
+}
+
+.input-with-icon select {
+  padding-left: 35px;
+}
+
+
+.modal-footer {
+  margin-top: 10px;
+  padding: 20px 30px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid #e2e8f0;
+  align-items: center;
+}
+
+
+.footer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.empty-msg{
+  width: 100%;
+  font: 1em sans-serif;
+  font-family: 'Courier New', Courier, monospace;
+  grid-column: 3;
+}

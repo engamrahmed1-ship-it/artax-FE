@@ -5,6 +5,18 @@ import './css/tabBar.css';
 const TabBar = () => {
   const { tabs, activeTabId, switchTab, closeTab } = useTabContext();
 
+  const checkSelection = (action) => {
+    // Check if a global flag or a specific DOM element indicates editing
+    // We can check if the "Save" button exists or use window.isEditing
+    if (window.isCustomerEditing) {
+      const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+      if (!confirmLeave) return;
+    }
+    // If confirmed or not editing, proceed
+    window.isCustomerEditing = false;
+    action();
+  };
+
   if (tabs.length === 0) {
     return null;
   }
@@ -16,7 +28,7 @@ const TabBar = () => {
           <div
             key={tab.id}
             className={`tab-item ${activeTabId === tab.id ? 'active' : ''}`}
-            onClick={() => switchTab(tab.id)}
+          onClick={() => checkSelection(() => switchTab(tab.id))}
           >
             <span className="tab-icon">
               {tab.type === 'B2B' ? '🏢' : '👤'}
@@ -26,7 +38,7 @@ const TabBar = () => {
               className="tab-close"
               onClick={(e) => {
                 e.stopPropagation();
-                closeTab(tab.id);
+                checkSelection(() => closeTab(tab.id));
               }}
             >
               ✕

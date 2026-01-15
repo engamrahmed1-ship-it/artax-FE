@@ -1,72 +1,80 @@
-
-
 .login-div {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 100vh; /* Changed to 100vh to ensure it fills the screen */
+  height: 100vh;
+  /* Changed to 100vh to ensure it fills the screen */
   width: 100%;
-  
+
   /* Add your image path here */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url('../../../assets/images/CRM-Man.jpg');
-  
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;       
+  overflow: hidden;
 }
 
+
+
 /* This ensures the internal flex container takes up every pixel of the login-div */
-.login-div > .d-flex {
-    width: 100%;
-    height: 100%;
+.login-div>.d-flex {
+  width: 100%;
+  height: 100%;
 }
 
 .login-title {
   /* Smaller, more professional font size */
-  font-size: 1.5rem;           /* Reduced from 2.2rem */
-  
+  font-size: 1.5rem;
+  /* Reduced from 2.2rem */
+
   /* Font selection for a modern look */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  
+
   /* Styling to match the Artax branding */
-  font-weight: 600;            /* Semi-bold for clarity without being too heavy */
-  color: #444444;              /* Soft dark grey for better readability */
+  font-weight: 600;
+  /* Semi-bold for clarity without being too heavy */
+  color: #444444;
+  /* Soft dark grey for better readability */
   text-align: center;
-  
+
   /* Spacing */
   margin-top: 10px;
-  margin-bottom: 25px;         /* Reduced gap to keep the card compact */
-  letter-spacing: -0.2px;      /* Subtle tightening for a modern feel */
-  text-transform: none;        /* Ensures it's "Sign in" not "SIGN IN" */
+  margin-bottom: 25px;
+  /* Reduced gap to keep the card compact */
+  letter-spacing: -0.2px;
+  /* Subtle tightening for a modern feel */
+  text-transform: none;
+  /* Ensures it's "Sign in" not "SIGN IN" */
 }
 
 
 .brand-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Prevents image stretching */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Prevents image stretching */
 }
 
 
 .login-logo {
-    /* Increased width */
-    width: 290px; 
-    
-    /* Set max-width higher to allow it to grow on larger screens */
-    max-width: 90%; 
-    
-    /* Maintain aspect ratio */
-    height: auto;
-    
-    /* Centering logic */
-    display: block;
-    margin: 0 auto;
-    
-    /* Optional: Ensure high-quality scaling */
-    image-rendering: -webkit-optimize-contrast;
+  /* Increased width */
+  width: 290px;
+
+  /* Set max-width higher to allow it to grow on larger screens */
+  max-width: 90%;
+
+  /* Maintain aspect ratio */
+  height: auto;
+
+  /* Centering logic */
+  display: block;
+  margin: 0 auto;
+
+  /* Optional: Ensure high-quality scaling */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* Optional: Remove default padding from the h1 container if it's too bulky */
@@ -75,32 +83,42 @@
   line-height: 1;
 }
 
-.login-brand-section, .login-form-section {
-    height: 100%; /* Ensures both sides go from top to bottom */
-    width: 50%;
+.login-brand-section,
+.login-form-section {
+  height: 100%;
+  /* Ensures both sides go from top to bottom */
+  width: 50%;
 }
+
 /* The parent of the login-card */
 .login-form-section {
-    display: flex;
-    align-items: flex-start; /* Keeps it near the top */
-    justify-content: flex-start; /* Keeps it near the left of this section */
-    padding-top: 5%;  /* Controls vertical position */
-    padding-left: 5%; /* Controls horizontal position */
+  display: flex;
+  align-items: flex-start;
+  /* Keeps it near the top */
+  justify-content: flex-start;
+  /* Keeps it near the left of this section */
+  padding-top: 5%;
+  /* Controls vertical position */
+  padding-left: 5%;
+  /* Controls horizontal position */
 }
 
 .login-card {
-    background: white;
-    padding: 70px; /* Internal spacing */
-    border-radius: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    
-    /* Enlarged dimensions */
-    width: 100%;
-    max-width: 650px; 
-    
-    /* Reset margin to avoid positioning conflicts */
-    margin: 0; 
+  background: white;
+  padding: 70px;
+  /* Internal spacing */
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* Enlarged dimensions */
+  width: 100%;
+  max-width: 650px;
+
+  /* Reset margin to avoid positioning conflicts */
+  margin: 0;
 }
+
+
 
 /* Input styling to match the photo */
 .custom-input {
@@ -119,39 +137,41 @@
 
 /* The blue gradient button from the photo */
 .btn-gradient {
-    width: 100%;
-    max-width: 320px; /* Matches the input width */
-    height: 48px;
-    margin: 10px auto 0; /* Centered with a bit of top margin */
-    display: block;
-    
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    
-    /* Artax Gradient: From Cyan to Deep Blue */
-    background: linear-gradient(90deg, #00C6FF 0%, #0072FF 100%);
-    
-    /* Soft Blue Glow Shadow */
-    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
-    
-    transition: all 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+  /* Matches the input width */
+  height: 48px;
+  margin: 10px auto 0;
+  /* Centered with a bit of top margin */
+  display: block;
+
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  /* Artax Gradient: From Cyan to Deep Blue */
+  background: linear-gradient(90deg, #00C6FF 0%, #0072FF 100%);
+
+  /* Soft Blue Glow Shadow */
+  box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
+
+  transition: all 0.3s ease;
 }
 
 .btn-gradient:hover {
-    /* Slight lift and stronger glow on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 114, 255, 0.45);
-    opacity: 0.95;
+  /* Slight lift and stronger glow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.45);
+  opacity: 0.95;
 }
 
 .btn-gradient:active {
-    /* "Press" effect */
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+  /* "Press" effect */
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
 }
 
 
@@ -160,7 +180,8 @@
 .input-group-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* This centers the label under the input */
+  align-items: center;
+  /* This centers the label under the input */
   margin-bottom: 25px;
   width: 100%;
 }
@@ -168,16 +189,20 @@
 /* The actual input field */
 .custom-input {
   width: 100%;
-  max-width: 320px; /* Adjust based on your card width */
+  max-width: 320px;
+  /* Adjust based on your card width */
   height: 45px;
   background-color: #ffffff;
-  border: 1px solid #d1d9e0; /* Soft grey border from photo */
-  border-radius: 12px; /* Smooth rounded corners */
+  border: 1px solid #d1d9e0;
+  /* Soft grey border from photo */
+  border-radius: 12px;
+  /* Smooth rounded corners */
   padding: 10px 15px;
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
-  text-align: center; /* Optional: centers the typed text like the photo */
+  text-align: center;
+  /* Optional: centers the typed text like the photo */
 }
 
 /* Focus effect: Subtle blue glow */
@@ -190,7 +215,58 @@
 .input-sub-label {
   margin-top: 8px;
   font-size: 0.8rem;
-  color: #8e8e8e; /* Faded grey color from design */
+  color: #8e8e8e;
+  /* Faded grey color from design */
   font-weight: 400;
   letter-spacing: 0.5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .login-div {
+    /* Forces the card to the center of the phone screen */
+    justify-content: center !important;
+    padding: 20px;
+    /* Ensures background image doesn't zoom in too weirdly */
+    background-position: center center;
+  }
+
+  .login-card {
+    /* Allows the card to shrink to fit phone width */
+    width: 95%;
+    max-width: 400px;
+    /* Reduces massive desktop padding so inputs are visible */
+    padding: 20% 20%;
+    border-radius: 25px;
+    /* Centers card in the flex container */
+    margin: 25% auto;
+  }
+
+  .login-logo {
+    width: 200px;
+    /* Slightly smaller logo for small screens */
+  }
+
+  .login-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .custom-input,
+  .btn-gradient {
+    /* Ensures buttons and inputs take up the card width */
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Hide redundant sections if you are using them in JSX */
+  .login-brand-section {
+    display: none;
+  }
+
+  .login-form-section {
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+  }
 }

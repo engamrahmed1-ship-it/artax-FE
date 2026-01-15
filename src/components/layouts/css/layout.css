@@ -57,8 +57,8 @@ header, .header-container {
   flex-grow: 1;
   margin-left: 250px; /* Match sidebar width so content starts after it */
   padding: 20px;
-  padding-bottom: 70px; /* <- add extra space for footer (50px) */
-   margin-bottom: 50px; /* add space equal to footer height */
+  padding-bottom: 55px; /* <- add extra space for footer (50px) */
+  /* margin-bottom: 50px; add space equal to footer height */
       overflow-y: auto;
     height: 100%;
 }

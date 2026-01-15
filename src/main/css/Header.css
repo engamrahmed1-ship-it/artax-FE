@@ -11,6 +11,13 @@
   padding: 0 20px;
 }
 
+.header-logo {
+  display: flex;
+  align-items: center; /* Vertically centers logo and text */
+  gap: 10px;           /* Adds space between logo and text if you uncomment the text */
+  margin: 0;
+}
+
 .header-logo h1 {
   margin: 0;
   font-size: 1.8em;
@@ -18,6 +25,28 @@
   letter-spacing: 1px;
   color: #ffffff; /* React blue color */
 }
+
+.header-logo .logo-image {
+  height: 100%;        /* Fits the 40px height of the parent */
+  width: auto;         /* Adjusts width automatically to prevent stretching */
+  max-width: 150px;    /* Optional: prevents logo from becoming too wide */
+  object-fit: contain; /* Ensures the image is contained without being cropped or distorted */
+  display: block;
+}
+
+
+
+.header-logo:hover .logo-image {
+  display: block; /* Show hover image on hover */
+  height: 100%;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  cursor: pointer;
+   /* image-rendering: pixelated; Pixelated effect on hover */
+}
+
+
 
 .header-nav ul {
   list-style: none;
@@ -33,7 +62,7 @@
 .header-nav a {
   color: white;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.3em;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }

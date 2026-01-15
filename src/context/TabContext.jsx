@@ -44,9 +44,6 @@ export const TabProvider = ({ children }) => {
 
 
 
-
-
-
   // 2. Handle Initial Navigation ONLY after Auth is ready
   useEffect(() => {
     // Only attempt to restore tabs if we have a valid token
@@ -98,92 +95,75 @@ export const TabProvider = ({ children }) => {
   // TabContext.jsx
 
   const openTab = useCallback(async (lightCustomer) => {
-    if (!token) {
-      console.warn("Attempted to open tab without auth token");
-      return;
-    }
+    if (!token) return;
+    
     const tabId = `customer-${lightCustomer.customerId}`;
 
-    console.log("this is our Customer")
-
-    console.log(lightCustomer)
-    // 1. If tab already exists, just switch to it
+    // 1. Quick Switch if already exists
     if (tabs.some(t => t.id === tabId)) {
-      setActiveTabId(tabId);
-      navigate(`/customer/info/${lightCustomer.customerId}`);
-      return;
+        setActiveTabId(tabId);
+        navigate(`/customer/info/${lightCustomer.customerId}`);
+        return;
     }
 
     try {
-      // 2. Fetch the profile (which includes the interaction history)
-      const response = await getCustomerProfile(lightCustomer.customerId, token);
+        const response = await getCustomerProfile(token, lightCustomer.customerId);
+        const fullProfileData = response.data;
 
-      // Based on your JSON: response.data contains the totalCount, data array, etc.
-      const fullProfileData = response.data;
-      const interactions = Array.isArray(fullProfileData.interactions)
-        ? fullProfileData.interactions
-        : (fullProfileData.interactions?.data || []);
+        console.log("Fetched full profile data:", fullProfileData);
+        // Enhancement: Unified Data Extraction Helper
+        const unwrap = (field) => (Array.isArray(field) ? field : (field?.data || []));
 
-      const projects = Array.isArray(fullProfileData.projects)
-        ? fullProfileData.projects
-        : (fullProfileData.projects?.data || []);
+        const interactions = unwrap(fullProfileData.interactions);
+        const projects = unwrap(fullProfileData.projects);
+        const opportunities = unwrap(fullProfileData.opportunities);
+        const tickets = unwrap(fullProfileData.tickets);
+        const documents = unwrap(fullProfileData.documents);
+        const notes = unwrap(fullProfileData.notes);
 
-      const opportunities = Array.isArray(fullProfileData.opportunities)
-        ? fullProfileData.opportunities
-        : (fullProfileData.opportunities?.data || []);
+        // Enhancement: Construct a clean customer object
+        const updatedCustomer = {
+            ...lightCustomer,
+            ...fullProfileData.customer?.data?.[0], // Ensure base info is updated
+            interactions,
+            projects,
+            opportunities,
+            tickets,
+            documents, // Added this line,
+            notes,
+            metadata: {
+                totalInteractions: fullProfileData.interactions?.totalCount ?? interactions.length,
+                totalProjects: fullProfileData.projects?.totalCount ?? projects.length,
+                totalOpportunities: fullProfileData.opportunities?.totalCount ?? opportunities.length,
+                totalTickets: fullProfileData.tickets?.totalCount ?? tickets.length,
+                totalDocuments: fullProfileData.documents?.totalCount ?? documents.length, // Added this line
+                 totalNotes: fullProfileData.notes?.totalCount ?? notes.length, // Added this line
+                lastUpdated: new Date().toISOString()
+            }
+        };
 
-      const tickets = Array.isArray(fullProfileData.tickets)
-        ? fullProfileData.tickets
-        : (fullProfileData.tickets?.data || []);
+        // Enhancement: Batch state updates
+        setTabs(prev => [...prev, {
+            id: tabId,
+            customerId: lightCustomer.customerId,
+            type: lightCustomer.custType,
+            title: lightCustomer.custType === "B2B" 
+                ? (lightCustomer.b2b?.companyName || "Company")
+                : `${lightCustomer.b2c?.firstName || ""} ${lightCustomer.b2c?.lastName || ""}`.trim(),
+            customer: updatedCustomer
+        }]);
 
-
-      console.log("this is our Full Customer")
-
-      console.log(response.data)
-
-      // 3. Merge the light data with the new detailed data
-      const updatedCustomer = {
-        ...lightCustomer,
-       interactions, // Store the interaction history
-        projects,// MAP PROJECTS HERE
-        opportunities,
-        tickets,
-        metadata: {
-          totalInteractions: fullProfileData.totalCount ?? interactions.length,
-          totalProjects: fullProfileData.projects?.totalCount ?? projects.length,
-          totalOpportunities: fullProfileData.opportunities?.totalCount ?? opportunities.length,
-          totalTickets: fullProfileData.tickets?.totalCount ?? tickets.length,
-          lastUpdated: new Date().toISOString()
-        }
-      };
-
-
-
-      setTabs(prev => [
-        ...prev,
-        {
-          id: tabId,
-          customerId: lightCustomer.customerId,
-          type: lightCustomer.custType,
-          title: lightCustomer.custType === "B2B"
-            ? lightCustomer.b2b?.companyName ?? "Company"
-            : `${lightCustomer.b2c?.firstName ?? ""} ${lightCustomer.b2c?.lastName ?? ""}`,
-          customer: updatedCustomer
-        }
-      ]);
-
-      setActiveTabId(tabId);
-
-      window.requestAnimationFrame(() => {
+        setActiveTabId(tabId);
         navigate(`/customer/info/${lightCustomer.customerId}`);
-      });
 
     } catch (error) {
-      console.error("Failed to fetch customer profile history:", error);
-      // Fallback: Open tab with light data if API fails
-      // or show an error notification
+        console.error("Failed to fetch customer profile:", error);
+        // UX Enhancement: Open with light data so the user isn't stuck
+        setTabs(prev => [...prev, { id: tabId, customerId: lightCustomer.customerId, customer: lightCustomer }]);
+        setActiveTabId(tabId);
+        navigate(`/customer/info/${lightCustomer.customerId}`);
     }
-  }, [tabs, token, navigate]);
+}, [tabs, token, navigate]);
 
   // -------------------------
   // SWITCH TAB
